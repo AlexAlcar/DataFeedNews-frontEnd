@@ -1,0 +1,58 @@
+[
+    {
+        "nombre": "Xataka",
+        "url": "https://feeds.weblogssl.com/xataka2"
+    },
+    {
+        "nombre": "Hipertextual",
+        "url": "https://hipertextual.com/feed"
+    },
+    {
+        "nombre": "El Androide Libre",
+        "url": "https://feeds.feedburner.com/elandroidelibre"
+    },
+    {
+        "nombre": "GenBeta",
+        "url": "https://www.genbeta.com/feedburner.xml"
+    },
+    {
+        "nombre": "Gizmodo",
+        "url": "https://es.gizmodo.com/rss"
+    },
+    {
+        "nombre": "MuyComputer",
+        "url": "https://www.muycomputer.com/feed/"
+    },
+    {
+        "nombre": "HardZone",
+        "url": "https://hardzone.es/feed/"
+    },
+    {
+        "nombre": "Teknófilo",
+        "url": "https://www.teknofilo.com/feed/"
+    },
+    {
+        "nombre": "Andro4all",
+        "url": "https://andro4all.com/feed"
+    },
+    {
+        "nombre": "Xataka Movil",
+        "url": "https://www.xatakamovil.com/feedburner.xml"
+    },
+    {
+        "nombre": "Applesfera",
+        "url": "https://www.applesfera.com/feedburner.xml"
+    },
+    {
+        "nombre": "Trendencias",
+        "url": "https://www.trendencias.com/feedburner.xml"
+    },
+    {
+        "nombre": "Espinof",
+        "url": "https://www.espinof.com/feedburner.xml"
+    },
+    {
+        "nombre": "Vidaextra",
+        "url": "https://www.vidaextra.com/feedburner.xml"
+    }
+]

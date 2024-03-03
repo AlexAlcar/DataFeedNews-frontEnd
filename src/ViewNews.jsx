@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {  Typography, Accordion, AccordionSummary, AccordionDetails, List,  ListItemText, Link, Divider, Paper, Snackbar, CircularProgress } from '@mui/material';
+import { Typography, Accordion, AccordionSummary, AccordionDetails, List, ListItemText, Link, Divider, Paper, Snackbar, CircularProgress } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import dayjs from 'dayjs';
 
@@ -14,7 +14,9 @@ function ViewNews() {
         if (rssSources && rssSources.length > 0) {
             Promise.all(
                 rssSources.map(source =>
-                    fetch(`https://datafeedbackend.azurewebsites.net/api/News?rssUrl=${source}`)
+                    //fetch(`https://datafeedbackend.azurewebsites.net/api/News?rssUrl=${source}`)
+                    fetch(`https://localhost:44361/api/News?rssUrl=${source}`)
+
                         .then(response => {
                             if (!response.ok) {
                                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -67,11 +69,17 @@ function ViewNews() {
 
     return (
         <>
-            <Paper sx={{ mt: 5, p: 2, background: 'whiteSmoke',  mt: '80px',width: '97vw', }} className='scale-in-center' elevation={5}>
-                <Typography variant="h4" gutterBottom>
+            <Paper style={{
+                background: 'whiteSmoke',
+                marginTop: '80px',
+                width: '97vw',
+                paddingBottom: '5px'
+                
+            }}className='scale-up-center' elevation={5}>
+                <Typography variant="h4" gutterBottom sx={{display:'flex', justifyContent:'center', pt:2}}>
                     Noticias de la última semana:
                 </Typography>
-                {loading ? ( 
+                {loading ? (
                     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '200px' }}>
                         <CircularProgress />
                         <Typography variant="body1" style={{ marginLeft: '16px' }}>Cargando...</Typography>
@@ -80,9 +88,9 @@ function ViewNews() {
                     Object.entries(groupBySource(news)).map(([source, newsForSource], index) => (
                         <div key={index} style={{
                             border: '1px solid grey',
-                            marginBottom: '16px',
+                            margin: '16px',
                             borderRadius: '4px',
-                            boxShadow: '0 8px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)'
+                            boxShadow: '0 8px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
                         }}>
                             <Accordion expanded={expandedSources[source]} onChange={() => handleExpandSource(source)}>
                                 <AccordionSummary expandIcon={<ExpandMoreIcon />} style={{ fontWeight: 'bold', color: 'linear-gradient( 110.3deg,  rgba(73,93,109,1) 4.3%, rgba(49,55,82,1) 96.7% )' }}>
@@ -101,9 +109,9 @@ function ViewNews() {
                                                     />
                                                 </AccordionSummary>
                                                 <AccordionDetails style={{ overflowWrap: 'break-word' }}>
-                                                    <Typography style={{ maxWidth: '100%', overflow: 'hidden' }} dangerouslySetInnerHTML={{ __html: item.content }} />
-                                                    <Divider />
-                                                    <Typography>Url: <Link href={item.url}>{item.url}</Link></Typography>
+                                                    <Typography style={{ maxWidth: '98vw', overflow: 'hidden' }} dangerouslySetInnerHTML={{ __html: item.content }} />
+                                                    {/*<Divider />
+                                                    <Typography>Url: <Link href={item.url}>{item.url}</Link></Typography>*/}
                                                 </AccordionDetails>
                                             </Accordion>
                                         ))}
