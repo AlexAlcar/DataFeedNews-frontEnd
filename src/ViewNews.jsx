@@ -72,7 +72,7 @@ function ViewNews() {
             <Paper style={{
                 background: 'whiteSmoke',
                 marginTop: '80px',
-                width: '97vw',
+                width: '100vw',
                 paddingBottom: '5px'
                 
             }}className='scale-up-center' elevation={5}>

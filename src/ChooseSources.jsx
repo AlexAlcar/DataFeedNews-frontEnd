@@ -40,8 +40,8 @@ function ChooseSources() {
     };
 
     return (
-        <Container sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '80px' }} className='scale-up-center'>
-            <Paper elevation={5} sx={{ background: 'whiteSmoke', width: '70vw', p: 2, mb: 4 }} >
+        <div style={{ paddingTop: '80px', width: '100vw', display:'flex', flexDirection:'column', alignItems:'center' }} className='scale-up-center'>
+            <Paper elevation={5} sx={{ background: 'whiteSmoke', p: 2, mb: 4 }} >
                 <Typography variant="h4" gutterBottom>
                     Añadir fuentes de noticias
                 </Typography>
@@ -53,9 +53,9 @@ function ChooseSources() {
                     onChange={(e) => setRssUrl(e.target.value)}
                     style={{ marginBottom: '1rem' }}
                 />
-                <Button variant="contained" onClick={addSource} sx={{ width:'200px', background: 'linear-gradient( 110.3deg,  rgba(73,93,109,1) 4.3%, rgba(49,55,82,1) 96.7% )' }}>Agregar Fuente</Button>
+                <Button variant="contained" onClick={addSource} sx={{ width: '200px', background: 'linear-gradient( 110.3deg,  rgba(73,93,109,1) 4.3%, rgba(49,55,82,1) 96.7% )' }}>Agregar Fuente</Button>
 
-                <List style={{ marginTop: '1rem' }}>
+                <List style={{ marginTop: '1rem', width: '80vw' }}>
                     {sources.map((source, index) => (
                         <ListItem key={index}>
                             <ListItemText primary={source} />
@@ -69,33 +69,29 @@ function ChooseSources() {
                 </List>
             </Paper>
 
-            <Paper elevation={5} sx={{ background: 'white', width: '70vw', p: 2 }}>
-                <Typography variant="h5" sx={{ textAlign: 'center', mb: 2 }}>Algunas webs de interés</Typography>
+            <Paper elevation={5} style={{ width:'70vw'}}>
+                <Typography variant="h5" style={{ textAlign: 'center', marginBottom: 2 }}>Algunas webs de interés</Typography>
 
-                <TableContainer component={Paper}>
-                    <Table>
-                        <TableHead>
-                            <TableRow>
-                                <TableCell>Nombre</TableCell>
-                                <TableCell>URL</TableCell>
-                                <TableCell>Acción</TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {rssList.map((item, index) => (
-                                <TableRow key={index}>
-                                    <TableCell>{item.nombre}</TableCell>
-                                    <TableCell>{item.url}</TableCell>
-                                    <TableCell>
-                                        <Button size='small' sx={{ background: 'linear-gradient( 110.3deg,  rgba(73,93,109,1) 4.3%, rgba(49,55,82,1) 96.7% )' }} variant="contained" onClick={() => subscribeToSource(item.url)}>Suscribirse</Button>
-                                    </TableCell>
-                                </TableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
-                </TableContainer>
+                <List>
+                    {rssList.map((item, index) => (
+                        <ListItem key={index}>
+                            <ListItemText primary={item.nombre} secondary={item.url} />
+                            <ListItemSecondaryAction>
+                                <Button
+                                    size='small'
+                                    sx={{ background: 'linear-gradient( 110.3deg, rgba(73,93,109,1) 4.3%, rgba(49,55,82,1) 96.7% )' }}
+                                    variant="contained"
+                                    onClick={() => subscribeToSource(item.url)}
+                                >
+                                    Suscribirse
+                                </Button>
+                            </ListItemSecondaryAction>
+                        </ListItem>
+                    ))}
+                </List>
             </Paper>
-        </Container>
+
+        </div>
     );
 }
 
