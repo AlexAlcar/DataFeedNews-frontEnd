@@ -69,7 +69,7 @@ function ViewNews() {
         <>
             <Paper sx={{ mt: 5, p: 2, background: 'whiteSmoke',  mt: '80px',width: '97vw', }} className='scale-in-center' elevation={5}>
                 <Typography variant="h4" gutterBottom>
-                    Últimas Noticias:
+                    Noticias de la última semana:
                 </Typography>
                 {loading ? ( 
                     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '200px' }}>
