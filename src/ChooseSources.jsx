@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Typography, TextField, Button, List, ListItem, ListItemText, ListItemSecondaryAction, IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Divider } from '@mui/material';
 import { Link } from 'react-router-dom';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -7,7 +7,27 @@ import rssList from './rssList.json'; // Importa el archivo JSON
 function ChooseSources() {
     const [rssUrl, setRssUrl] = useState('');
     const [sources, setSources] = useState(JSON.parse(localStorage.getItem('rssSources')) || []);
+    const [favicons, setFavicons] = useState({});
 
+    useEffect(() => {
+        // Función para cargar los favicons al montar el componente
+        const loadFavicons = async () => {
+            const faviconMap = {};
+            for (const item of rssList) {
+                try {
+                    const response = await fetch(`https://www.google.com/s2/favicons?sz=64&domain=${item.url}`);
+                    const blob = await response.blob();
+                    const url = URL.createObjectURL(blob);
+                    faviconMap[item.url] = url;
+                } catch (error) {
+                    console.error('Error al obtener el favicon para', item.url);
+                }
+            }
+            setFavicons(faviconMap);
+        };
+
+        loadFavicons();
+    }, []);
     const addSource = () => {
         if (rssUrl.trim() !== '') {
             // Verificar si la fuente ya existe en la lista
@@ -76,6 +96,7 @@ function ChooseSources() {
                     <Table>
                         <TableHead>
                             <TableRow>
+                            <TableCell>Favicon</TableCell>
                                 <TableCell>Nombre</TableCell>
                                 <TableCell>URL</TableCell>
                                 <TableCell>Acción</TableCell>
@@ -84,6 +105,9 @@ function ChooseSources() {
                         <TableBody>
                             {rssList.map((item, index) => (
                                 <TableRow key={index}>
+                                    <TableCell>
+                                        {favicons[item.url] && <img src={favicons[item.url]} alt="Favicon" width={32} height={32} />}
+                                    </TableCell>
                                     <TableCell>{item.nombre}</TableCell>
                                     <TableCell>{item.url}</TableCell>
                                     <TableCell>
