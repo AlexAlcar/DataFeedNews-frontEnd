@@ -14,7 +14,7 @@ function ViewNews() {
         if (rssSources && rssSources.length > 0) {
             Promise.all(
                 rssSources.map(source =>
-                    fetch(`https://localhost:44361/api/News?rssUrl=${source}`)
+                    fetch(`https://datafeedbackend.azurewebsites.net/api/News?rssUrl=${source}`)
                         .then(response => {
                             if (!response.ok) {
                                 throw new Error(`HTTP error! status: ${response.status}`);
