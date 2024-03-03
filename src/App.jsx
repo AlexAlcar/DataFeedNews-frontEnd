@@ -10,6 +10,7 @@ function App() {
     <Router>
       <Menu />
       <Routes>
+      <Route path="/" element={<ChooseSources />} />
         <Route path="/news" element={<ViewNews />} />
         <Route path="/sources" element={<ChooseSources />} />
       </Routes>
