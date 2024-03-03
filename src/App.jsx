@@ -12,7 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<ChooseSources />} />
         <Route path="/news" element={<ViewNews />} />
-        <Route path="/choose-sources" element={<ChooseSources />} />
+        <Route path="/sources" element={<ChooseSources />} />
       </Routes>
     </Router>
   );
