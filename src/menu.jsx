@@ -12,7 +12,7 @@ function Menu() {
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                     DataFeed
                 </Typography>
-                <Button color="inherit" component={Link} to="/choose-sources">Elegir Fuentes</Button>
+                <Button color="inherit" component={Link} to="/sources">Elegir Fuentes</Button>
                 <Button color="inherit" component={Link} to="/news">Ver Noticias</Button>
             </Toolbar>
         </AppBar>
