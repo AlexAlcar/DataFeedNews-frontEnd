@@ -69,14 +69,8 @@ function ViewNews() {
 
     return (
         <>
-            <Paper style={{
-                background: 'whiteSmoke',
-                marginTop: '80px',
-                width: '100vw',
-                paddingBottom: '5px'
-                
-            }}className='scale-up-center' elevation={5}>
-                <Typography variant="h4" gutterBottom sx={{display:'flex', justifyContent:'center', pt:2}}>
+            <div className='scale-up-center' >
+                <Typography variant="h4" gutterBottom sx={{ display: 'flex', justifyContent: 'center', pt: 2 }}>
                     Noticias de la última semana:
                 </Typography>
                 {loading ? (
@@ -88,20 +82,24 @@ function ViewNews() {
                     Object.entries(groupBySource(news)).map(([source, newsForSource], index) => (
                         <div key={index} style={{
                             border: '1px solid grey',
-                            margin: '16px',
+                            marginBottom: '16px',
                             borderRadius: '4px',
                             boxShadow: '0 8px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
+
                         }}>
-                            <Accordion expanded={expandedSources[source]} onChange={() => handleExpandSource(source)}>
+                            <Accordion
+                                expanded={expandedSources[source]}
+                                onChange={() => handleExpandSource(source)}
+                                style={{ background: 'Gainsboro' }}>
                                 <AccordionSummary expandIcon={<ExpandMoreIcon />} style={{ fontWeight: 'bold', color: 'linear-gradient( 110.3deg,  rgba(73,93,109,1) 4.3%, rgba(49,55,82,1) 96.7% )' }}>
                                     <Typography variant="h5">
                                         {source.split('/')[2]} ({newsForSource.length})
                                     </Typography>
                                 </AccordionSummary>
-                                <AccordionDetails>
+                                <AccordionDetails style={{ margin: '0px', padding: '0px' }}>
                                     <List>
                                         {newsForSource.map((item, index) => (
-                                            <Accordion key={index} sx={{ border: '1px solid lightGray' }}>
+                                            <Accordion key={index} sx={{ border: '1px solid lightGray', margin: '0px' }}>
                                                 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                                                     <ListItemText
                                                         primary={<Typography sx={{ fontWeight: 'bold', fontSize: '1.1em' }}>{item.title}</Typography>}
@@ -109,9 +107,7 @@ function ViewNews() {
                                                     />
                                                 </AccordionSummary>
                                                 <AccordionDetails style={{ overflowWrap: 'break-word' }}>
-                                                    <Typography style={{ maxWidth: '98vw', overflow: 'hidden' }} dangerouslySetInnerHTML={{ __html: item.content }} />
-                                                    {/*<Divider />
-                                                    <Typography>Url: <Link href={item.url}>{item.url}</Link></Typography>*/}
+                                                    <Typography style={{ overflow: 'hidden' }} dangerouslySetInnerHTML={{ __html: item.content }} />
                                                 </AccordionDetails>
                                             </Accordion>
                                         ))}
@@ -121,7 +117,7 @@ function ViewNews() {
                         </div>
                     ))
                 )}
-            </Paper>
+            </div>
             <Snackbar
                 open={errorSnackbarOpen}
                 autoHideDuration={6000}

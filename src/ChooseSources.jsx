@@ -40,8 +40,8 @@ function ChooseSources() {
     };
 
     return (
-        <div style={{ paddingTop: '80px', width: '100vw', display:'flex', flexDirection:'column', alignItems:'center' }} className='scale-up-center'>
-            <Paper elevation={5} sx={{ background: 'whiteSmoke', p: 2, mb: 4 }} >
+        <div className='scale-up-center'>
+            <div >
                 <Typography variant="h4" gutterBottom>
                     Añadir fuentes de noticias
                 </Typography>
@@ -53,9 +53,12 @@ function ChooseSources() {
                     onChange={(e) => setRssUrl(e.target.value)}
                     style={{ marginBottom: '1rem' }}
                 />
-                <Button variant="contained" onClick={addSource} sx={{ width: '200px', background: 'linear-gradient( 110.3deg,  rgba(73,93,109,1) 4.3%, rgba(49,55,82,1) 96.7% )' }}>Agregar Fuente</Button>
-
-                <List style={{ marginTop: '1rem', width: '80vw' }}>
+                <Button
+                    variant="contained"
+                    onClick={addSource} sx={{ width: '200px', background: 'linear-gradient( 110.3deg,  rgba(73,93,109,1) 4.3%, rgba(49,55,82,1) 96.7% )' }}>
+                    Agregar Fuente
+                </Button>
+                <List >
                     {sources.map((source, index) => (
                         <ListItem key={index}>
                             <ListItemText primary={source} />
@@ -67,11 +70,10 @@ function ChooseSources() {
                         </ListItem>
                     ))}
                 </List>
-            </Paper>
-
-            <Paper elevation={5} style={{ width:'70vw'}}>
+            </div>
+            <Divider sx={{ mt: 3, mb: 3 }} />
+            <div>
                 <Typography variant="h5" style={{ textAlign: 'center', marginBottom: 2 }}>Algunas webs de interés</Typography>
-
                 <List>
                     {rssList.map((item, index) => (
                         <ListItem key={index}>
@@ -89,7 +91,7 @@ function ChooseSources() {
                         </ListItem>
                     ))}
                 </List>
-            </Paper>
+            </div>
 
         </div>
     );

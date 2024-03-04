@@ -2,6 +2,7 @@
   -webkit-animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
   animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
+
 @-webkit-keyframes scale-up-center {
   0% {
     -webkit-transform: scale(0.5);
@@ -26,42 +27,27 @@
   }
 }
 
+html {
+  background: whitesmoke;
 
-
-html,
-body {
-  margin: 0;
-  padding: 0;
-  width: 100vw !important;
 }
 
-/* Aplicar el gradiente radial al cuerpo */
+
 body {
+  margin: 0px;
+  margin-top: 64px;
+}
+
+.layout {
   display: flex;
-  justify-content: center;
-  height: 100vh;
-  /* Esto asegura que la página ocupe el 100% de la altura de la ventana */
-  background: radial-gradient(at center, #CFCFCF, #8E8E8E);
+  flex-direction: column;
 }
 
-::-webkit-scrollbar {
-  width: 8px;
-  /* Ancho del scrollbar */
-}
 
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  /* Color del fondo del scrollbar */
-}
+.content {
 
-::-webkit-scrollbar-thumb {
-  background: #888;
-  /* Color del thumb del scrollbar */
-  border-radius: 4px;
-  /* Bordes redondeados del thumb */
-}
+  padding: 15px;
+  /* Espaciado interno del contenido */
+  box-sizing: border-box;
 
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
-  /* Color del thumb del scrollbar al pasar el ratón */
 }
